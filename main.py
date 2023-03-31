@@ -1,11 +1,14 @@
 import streamlit as st
 import plotly.express as px
+from backened import get_data
 
 st.title("Weather forecast for the next couple of days")
 place = st.text_input("Place: ")
 days = st.slider("Forecast Days", min_value=1, max_value=5, help="Select the number of days for the forecasted days")
 option = st.selectbox("Select Data to view", ("Temperature", "Sky"))
 sub = st.subheader(f"{option} for the next {days} days in {place}")
+
+get_data(place,days,option)
 
 dates = ["2022-25-20", "2022-26-20", "2022-27-20"]
 temperature = [10,11,12]
